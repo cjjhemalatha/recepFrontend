@@ -68,22 +68,20 @@
     </tr>
   
    <tr *ngFor="let row of value">
-        <!-- <td>{{card1.applicationId}}</td>
-        <td>{{card1.applicationDate}}</td>
-        <td>{{card1.purpose}}</td>
-        <td>{{card1.availability}}</td>
-        <td>{{card1.doctor.doctorId}}</td>
-        <td>{{card1.patient.p_id}}</td>
-        <td>{{card1.patient.firstName}}</td> -->
-        <td *ngFor = "let column of headers">
-          {{row.column}};
-        </td>
-    
-
-        <td><button (click)="confirmAppointment(this.row,this.row.patient.p_id)" class="btn btn-success">Confirm</button></td>
-        <td><button class="btn btn-warning" (click)="cancelAppointment(this.row)">Cancel</button></td>
-        <td><button class="btn btn-primary" (click)="generatepriscription()">Generate</button>
-        
+        <td>{{row.applicationId}}</td>
+        <td>{{row.applicationDate| date: "MM/dd/yy"
+        }}</td>
+        <td>{{row.applicationDate| date: "hh:mm a":"GMT"
+        }}</td>
+        <td>{{row.purpose}}</td>
+        <td>{{row.availability}}</td>
+        <td>{{row.doctor.doctorId}}</td>
+        <td>{{row.patient.p_id}}</td>
+        <td>{{row.patient.firstName}}</td>
+        <td><button (click)="confirmAppointment(this.row.patient.p_id,this.row)" class="btn btn-success">Confirm</button></td>
+        <td><button class="btn btn-warning" (click)="cancelAppointment(this.row,this.row.patient.p_id)">Cancel</button></td>
+        <td><button class="btn btn-primary" (click)="goingIn(this.row,this.row.patient.p_id)">Going In</button>
+        <td><button class="btn btn-primary" (click)="downloadTest(this.row)">Generate</button>
       </tr>      
     
     
